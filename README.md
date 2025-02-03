@@ -21,21 +21,27 @@ each fungi species, with a total of 1001 images. We additionally have a held-out
 A mobile app where members of the public can upload photos of fungi and the app will identify the species and state if it is edible or poisonous. This will raise the perception of the public on fungi so that people can foster non-dangerous species, while also encouraging the removal of poisonous species of fungi.
 
 ### 2. Data evaluation:
-The collection contains approximately 1000 images from 10 different species, 5 are edible and 5 are poisonous. For each subset, 15 images, which are 20% of the smallest subset, were kept for validation to balance between training capacity and model evaluation
+The collection contains approximately 1000 images from 10 different species, 5 are edible and 5 are poisonous. For each subset, 15 images, which are 20% of the smallest subset, were kept for validation to balance between training capacity and model evaluation.
+
 ![Train_Val](graphics/Train_Val.png)
 
 From the above figure, there is obviously the imbalance in the dataset. The instances with "poisonous" labels are remarkably greater than "edible" ones. In general, "poisonous_4" contains the highest number of instances, even double that of "edible_4", followed by "edible_5". The other two species of edible fungi, which are "edible_1" and "edible_4", obtain the smallest counts among the categories. To overcome this imbalance, data balancing was applied.
+
 ![Balanced_sampling](graphics/Balanced_sampling.png)
 
 ### 3. Solution
 Input images were transformed to tensor based on ImageNet datasets to fit into the model. Several transformers (flipping, rotation, blur) were also applied to enhance the learning capability. Using DINOv2 (vitb14) as the Foundation model, the suggested machine learning model then converts 768 Dino’s features to 10 features to fit 10 fungi classes, adopting a simple neural network with one hidden layer.
+
 ![Model](graphics/Model.png)
 
 ### 4. Results
-The results show that my model achieved a high level of accuracy for the case study, in which poisonous classes are likely to be correctly predicted for 97%. Due to some limitations from data quality, trade-off between accuracy and generalisation, further improvement can be considered. 
-![confusion_matrix](graphics/confusion_matrix.png)
+The results show that my model achieved a high level of accuracy for the case study. A testing strategy which averaged the accuracy of 10 testing procedure was conducted with the result of `92.3%`. The test datasets were sampled randomly in each iterations to achieve the fairness in testing context.
+
 ![random_tests](graphics/random_tests.png)
-![Confidence_curve](graphics/Confidence_curve.png)
+
+For a specific test, poisonous classes are likely to be correctly predicted for a greater number of instances, which is preferred because of the critical importance of identifying toxic fungi accurately. Misclassifying a poisonous species as edible could have severe health consequences, including poisoning or fatal reactions. Therefore, ensuring a higher recall for poisonous fungi is vital to minimize risks and enhance the reliability of the classification model. For example, 97% the instances predicted as **poisonous** are actually **poisonous** and only 2.7% the actual poisonous fungi are mistakenly classified as edible.
+
+![confusion_matrix](graphics/confusion_matrix.png)
 
 ### 5. Discussion
 Achievements:
@@ -57,9 +63,11 @@ Recommendation:
 -	Adopting better machine learning models/architectures or combine them.
 -	Tuning hyperparameters and optimizers.
 
-### Appendix
+### 6. Appendix
 During the training and validation phases, early stopping was applied to prevent overfitting and time-consuming. The gaps in the figure are magnified just to clarify as they are very close.
-![LossAcc](graphics/LossAcc.png)
+
+![LossAcc](graphics/LostAcc.png)
 
 Figure 1 shows several issues in traning datasets such as the ambiguous figures of fungi, sparsity, and similarity between **edible** and **poisonous** types. On the other hand, figure 2 illustrates a couple of effective techniques to enrich the quality of inputs.
+
 ![Appendix](graphics/Appendix.PNG)
