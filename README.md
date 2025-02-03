@@ -1,8 +1,8 @@
 # Automated Fungi Classification
-## I. Brisbane Flora and Fauna Society (fictitious) - Business requirements-
+## I. Brisbane Flora and Fauna Society (fictitious) - Business requirements
 Data credit-
 Data credit- Picek, Lukáš, et al. "Danish fungi 2020-not just another image recognitio-ndataset."
-Proceeding- of the IEEE/CVF Winter Conference on Applications of Computer Vision. 202-.
+Proceeding- of the IEEE/CVF Winter Conference on Applications of Computer Vision. 2022.
 
 ### 1. Background
 The Brisbane Flora and Fauna Society (BFFS) is a not-for-profit committed to the preservation, protection, and enhancement of Brisbane's diverse ecosystem. BFFS is composed of dedicated environmental enthusiasts, biologists, and volunteers who work tirelessly to safeguard the region's rich biodiversity, focusing specifically on the city's unique flora and fauna. Through education, conservation initiatives, community participation, and collaboration with government and non-government entities, BFFS is a frontline guardian of Brisbane's natural heritage, balancing
@@ -29,12 +29,12 @@ From the above figure, there is obviously the imbalance in the dataset. The inst
 
 ![Balanced_sampling](graphics/Balanced_sampling.png)
 
-### 3. Solution
+### 3. Solution:
 Input images were transformed to tensor based on ImageNet datasets to fit into the model. Several transformers (flipping, rotation, blur) were also applied to enhance the learning capability. Using DINOv2 (vitb14) as the Foundation model, the suggested machine learning model then converts 768 Dino’s features to 10 features to fit 10 fungi classes, adopting a simple neural network with one hidden layer.
 
 ![Model](graphics/Model.png)
 
-### 4. Results
+### 4. Results:
 The results show that my model achieved a high level of accuracy for the case study. A testing strategy which averaged the accuracy of 10 testing procedure was conducted with the result of `92.3%`. The test datasets were sampled randomly in each iterations to achieve the fairness in testing context.
 
 ![random_tests](graphics/random_tests.png)
@@ -43,7 +43,7 @@ For a specific test, poisonous classes are likely to be correctly predicted for 
 
 ![confusion_matrix](graphics/confusion_matrix.png)
 
-### 5. Discussion
+### 5. Discussion:
 Achievements:
 -   The model performs at a high level of accuracy for user-case.
 -   Poisonous classes are likely to be correctly predicted.
@@ -63,7 +63,7 @@ Recommendation:
 -	Adopting better machine learning models/architectures or combine them.
 -	Tuning hyperparameters and optimizers.
 
-### 6. Appendix
+### 6. Appendix:
 During the training and validation phases, early stopping was applied to prevent overfitting and time-consuming. The gaps in the figure are magnified just to clarify as they are very close.
 
 ![LossAcc](graphics/LostAcc.png)
