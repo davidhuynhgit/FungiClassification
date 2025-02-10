@@ -66,7 +66,7 @@ Recommendation:
 ### 6. Appendix:
 During the training and validation phases, early stopping was applied to prevent overfitting and time-consuming. The gaps in the figure are magnified just to clarify as they are very close.
 
-![LossAcc](graphics/LostAcc.png)
+![LossAcc](graphics/LossAcc.png)
 
 Figure 1 shows several issues in traning datasets such as the ambiguous figures of fungi, sparsity, and similarity between **edible** and **poisonous** types. On the other hand, figure 2 illustrates a couple of effective techniques to enrich the quality of inputs.
 
